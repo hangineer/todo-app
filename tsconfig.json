@@ -6,6 +6,12 @@
     },
     {
       "path": "./tsconfig.app.json"
-    }
-  ]
+    },
+  ],
+  "baseUrl": ".",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+  },
 }

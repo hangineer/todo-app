@@ -1,23 +1,14 @@
-
-
 <template>
-  <header>
-    <div class="wrapper">
-      test
-    </div>
-  </header>
+  <TodoList class="w-1/3 m-5"/>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue';
+import TodoList from '@/components/TodoList.vue';
+
+export default defineComponent({
+  components: {
+    TodoList,
+  },
+})
 </script>
-
-<style scoped>
-@media (min-width: 1024px) {
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
