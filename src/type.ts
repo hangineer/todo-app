@@ -1,5 +1,5 @@
 enum TodoStatus {
-  Todo = 'todo',
+  Pending = 'pending',
   InProgress = 'inProgress',
   Completed = 'completed',
 }
@@ -8,8 +8,8 @@ interface TodoStructure {
   id: number;
   title: String;
   description: String;
-  startDate: String;
-  endDate: String;
+  startDate?: String;
+  endDate?: String;
   status: TodoStatus,
 }
 
