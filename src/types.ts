@@ -6,9 +6,9 @@ export enum TodoStatus {
 
 export interface TodoStructure {
   id: number;
-  title: String;
-  description: String;
-  startDate?: String;
-  endDate?: String;
+  title: string;
+  description: string;
+  startDate?: string;
+  endDate?: string;
   status: TodoStatus,
 }

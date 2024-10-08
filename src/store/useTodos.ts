@@ -26,7 +26,7 @@ const todoStore = reactive<TodoStore>(defaultList);
 
 export default () => {
   // 取得
-  const getTodoByStatus = () => (status: TodoStatus) => {
+  const getTodoByStatus = (status: TodoStatus) => {
     return computed(() => todoStore[status]);
   }
   // 新增

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-2">
     <h3
       v-if="!shouldDisplayForm"
       @click="shouldDisplayForm = !shouldDisplayForm"
@@ -8,18 +8,17 @@
     </h3>
     <template v-else>
       <form @submit.prevent="handleOnSubmit">
-        <div>
+        <div class="mt-4">
           <input v-model="newTodo.title" type="text" placeholder="Title" />
         </div>
-        <div>
+        <div class="mt-4">
           <textarea
             v-model="newTodo.description"
             type="text"
-            placeholder="Title"
+            placeholder="Description"
           />
         </div>
-
-        <button type="submit">Submit</button>
+        <button class="mr-4" type="submit">Submit</button>
         <button type="button" @click="resetForm">Cancel</button>
       </form>
     </template>
