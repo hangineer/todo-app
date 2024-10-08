@@ -1,26 +1,20 @@
 <template>
-  <div>
-    <!-- <DatePicker v-model="date" /> -->
-    <TodoGroup :status="TodoStatus.Todo"/>
-    <TodoGroup :status="TodoStatus.InProgress"/>
-    <TodoGroup :status="TodoStatus.Completed"/>
+  <div class="groups-wrapper">
+    <TodoGroup :status="TodoStatus.Pending" />
+    <TodoGroup :status="TodoStatus.InProgress" />
+    <TodoGroup :status="TodoStatus.Completed" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { TodoStatus } from '@/type';
-import TodoGroup from '@/components/TodoGroup.vue';
-
-export default defineComponent({
-  components: {
-    TodoGroup,
-  },
-  data() {
-    return {
-      // date: null,
-      TodoStatus,
-    }
-  },
-})
+<script setup lang="ts">
+import { TodoStatus } from "@/types";
+import TodoGroup from "@/components/TodoGroup.vue";
 </script>
+
+<style scoped>
+.groups-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+</style>

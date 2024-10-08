@@ -1,14 +1,37 @@
 <template>
-  <TodoList class="w-1/3 m-5"/>
+  <div class="app-wrapper">
+    <div class="wrapper">
+      <TodoList />
+    </div>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import TodoList from '@/components/TodoList.vue';
-
-export default defineComponent({
-  components: {
-    TodoList,
-  },
-})
+<script setup lang="ts">
+import TodoList from "./components/TodoList.vue";
 </script>
+
+<style scoped>
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+</style>

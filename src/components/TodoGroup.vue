@@ -1,53 +1,25 @@
 <template>
-  <h3>{{ groupName }}</h3>
-  <!-- todo -->
-  <ul>
-    <li v-for="item in todoList" :key="item.id">{{ item.title }}</li>
-  </ul>
+  <div class="group-wrapper">
+    <h3>{{ groupLabel[props.status] }}</h3>
+
+    <Draggable
+      class="draggable"
+      :list="todoList"
+      group="todos"
+      itemKey="id"
+      @change="onDraggableChange"
+    >
+      <template #item="{ element: todo }">
+        <li>
+          {{ todo.title }}
+          <span class="delete-icon" @click="deleteTodo(todo)">X</span>
+          <div>
+            <span class="todo-description">{{ todo.description }}</span>
+          </div>
+        </li>
+      </template>
+    </Draggable>
+
+    <CreateTodo :status="props.status" />
+  </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { TodoStatus, type TodoStructure } from '@/type';
-
-interface Props {
-  status : TodoStatus,
-}
-
-export default defineComponent ({
-  props: {
-    status: {
-      type: String as () => TodoStatus,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      todoList: [
-        {
-          id: 1,
-          title: 'Learn TypeScript',
-          description: 'spend at least 1 hour per week.',
-          startDate: '',
-          endDate: '',
-          status: TodoStatus.Todo
-        }
-      ] as TodoStructure[]
-    };
-  },
-  computed: {
-    groupName() {
-      switch(this.status) {
-        case(TodoStatus.Todo):
-          return 'Todo';
-        case(TodoStatus.InProgress):
-          return 'In Progress';
-        case(TodoStatus.Completed):
-          return 'Completed';
-          default:
-            return 'Todo List'
-      }
-    }
-  },
-})
-</script>
