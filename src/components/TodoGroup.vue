@@ -23,3 +23,36 @@
     <CreateTodo :status="props.status" />
   </div>
 </template>
+
+<script setup lang="ts">
+import { TodoStatus } from "@/types";
+import Draggable from "vuedraggable";
+import useTodos from "@/store/useTodos";
+import CreateTodo from "@/components/CreateTodo.vue";
+
+interface Props {
+  status: TodoStatus;
+}
+
+const props = defineProps<Props>();
+
+const {
+  getTodoByStatus,
+  deleteTodo,
+  updateTodo
+} = useTodos();
+
+const todoList = getTodoByStatus(props.status);
+
+const groupLabel = {
+  [TodoStatus.Pending]: "Pending",
+  [TodoStatus.InProgress]: "In Progress",
+  [TodoStatus.Completed]: "Completed",
+};
+
+const onDraggableChange = (payload: any) => {
+  if (payload?.added?.element?.status) {
+    updateTodo(payload?.added?.element, props.status);
+  }
+};
+</script>
