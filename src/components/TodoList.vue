@@ -23,6 +23,5 @@ import TodoGroup from "@/components/TodoGroup.vue";
 <style scoped>
 .todo-block {
   min-height: 75vh;
-
 }
 </style>

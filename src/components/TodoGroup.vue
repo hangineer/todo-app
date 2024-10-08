@@ -53,7 +53,6 @@ const groupLabel = {
 };
 
 const onDraggableChange = (payload: any) => {
-  console.log('payload',payload)
   if (payload?.added?.element?.status) {
     updateTodo(payload?.added?.element, props.status);
   }
